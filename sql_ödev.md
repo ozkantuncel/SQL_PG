@@ -132,3 +132,65 @@ GROUP BY country_id
 ORDER BY COUNT(city) DESC
 LIMIT 1;
 ```
+# SQL Komutları - Ödev 8
+1. **test** veritabanınızda **employee** isimli sütun bilgileri id(INTEGER), name VARCHAR(50), birthday DATE, email VARCHAR(100) olan bir tablo oluşturalım.
+```sql
+CREATE TABLE employee (
+    id INT NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    birtday DATE,
+    email VARCHAR(100)
+);
+```
+2. Oluşturduğumuz **employee** tablosuna '[Mockaroo](https://www.mockaroo.com/)' servisini kullanarak 50 adet veri ekleyelim.
+```sql
+insert into employee (id, name, birtday, email) values (1, 'Wynny Aynsley', '1941-09-12', 'waynsley0@unc.edu');
+```
+3. Sütunların her birine göre diğer sütunları güncelleyecek 5 adet **UPDATE** işlemi yapalım.
+```sql
+UPDATE employee 
+SET name = 'name_last',
+    birtday = '1900-01-01'
+WHERE id >45;
+```
+```sql
+UPDATE employee
+SET name = 'Alice'
+WHERE birtday > '1980-02-02';
+```
+```sql
+UPDATE employee 
+SET email ='alice@frank.com'
+WHERE name LIKE ('A%');
+```
+```sql
+UPDATE employee 
+SET birtday = '2000-02-01'
+WHERE email ='alice@frank.com' ;
+```
+```sql
+UPDATE employee 
+SET birtday = NULL
+WHERE id>32;
+```
+4. Sütunların her birine göre ilgili satırı silecek 5 adet **DELETE** işlemi yapalım.
+```sql
+DELETE FROM employee
+WHERE id>45;
+```
+```sql
+DELETE FROM employee
+WHERE name = 'Alice';
+```
+```sql
+DELETE FROM employee
+WHERE name LIKE ('%i');
+```
+```sql
+DELETE FROM employee
+WHERE email = 'hbaldickn@icio.us';
+```
+```sql
+DELETE FROM employee
+WHERE birthday< '2000-02-01';
+```
